@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "porto-test-package"
 
-version = 0.0.1
+version = ${VERSION}
 requires-python = ">= 3.8"
 
 description = "Test 42 Porto package!"
