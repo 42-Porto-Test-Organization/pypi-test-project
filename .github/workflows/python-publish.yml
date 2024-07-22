@@ -14,7 +14,7 @@ on:
       - "created"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:  
   deploy:
@@ -29,9 +29,11 @@ jobs:
         sed -i 's/version =.*/version = ${VERSION}/' version.txt
 
 
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Commit and push to master.
+    uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Apply version to pyproject.toml
+        file_pattern: version.txt
 
     - name: Set up Python
       uses: actions/setup-python@v3
