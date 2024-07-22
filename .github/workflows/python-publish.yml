@@ -22,9 +22,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Write version of GitHub release to pyproject.toml
+    - id: get_version
+      name: Get version
+      uses: jannemattila/get-version-from-tag@v3
+
+    - name: Write version of release to pyproject.toml
       run: |
         VERSION=$(echo "${{ steps.get_version.outputs.version }}")
+        echo $VERSION
         sed -i 's/version =.*/version = '"$VERSION"'/' version.txt        
 
     - name: Commit and push to master.
