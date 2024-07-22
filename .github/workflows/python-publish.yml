@@ -17,8 +17,8 @@ permissions:
   contents: write
 
 jobs:  
-  deploy:
-    runs-on: ubuntu-latest
+  build-and-push:
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
 
