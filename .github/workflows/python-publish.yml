@@ -24,10 +24,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Write version to file
-      with:
-        filename: '/.VERSION'
-        placeholder: '${VERSION}'
+    - name: Write version of GitHub release to pyproject.toml
+      run: |
+        echo ${VERSION} >> version.txt
+
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
