@@ -29,15 +29,14 @@ jobs:
     - name: Write version of release to pyproject.toml
       run: |
         VERSION=$(echo "${{ steps.get_version.outputs.version }}")
-        echo $VERSION
-        sed -i 's/version =.*/version = '"$VERSION"'/' version.txt        
+        sed -i 's/version =.*/version = '"$VERSION"'/' version.txt
 
     - name: Commit and push to master.
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         branch: main
         commit_message: Apply version to pyproject.toml
-        file_pattern: version.txt
+        file_pattern: pyproject.toml
         push_options: --force
         token: ${{ secrets.GIT_TOKEN }}
 
