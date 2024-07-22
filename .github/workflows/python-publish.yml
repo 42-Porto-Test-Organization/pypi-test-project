@@ -29,7 +29,7 @@ jobs:
     - name: Commit and push to master.
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        branch: master
+        branch: main
         commit_message: Apply version to pyproject.toml
         file_pattern: version.txt
         push_options: --force
