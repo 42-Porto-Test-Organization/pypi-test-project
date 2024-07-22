@@ -26,7 +26,12 @@ jobs:
 
     - name: Write version of GitHub release to pyproject.toml
       run: |
-        echo ${VERSION} >> version.txt
+        sed -i 's/version =.*/version = ${VERSION}/' version.txt
+
+
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Apply version to pyproject.toml
 
     - name: Set up Python
       uses: actions/setup-python@v3
